@@ -22,7 +22,7 @@ echo "${dictionary[@]}"
 percentage1=$((($head*100)/10))
 percentage2=$((($tail*100)/10))
 
-#sorting the result of singlet combination
+#sorting the result of singlet combination and showing winning combination
 for (( i=0;i<4;i++ ))
 do
    for (( j=$((i+1));j<4;j++ ))
@@ -36,6 +36,7 @@ do
    done
 done
 echo "${dictionary[@]}"
+echo "${dictionary[3]}"
 
 #flipping a coin and store the doublet combination
 HH=0
@@ -80,7 +81,7 @@ dictionary[3]=$percentage4
 echo "${!dictionary[@]}"
 echo "${dictionary[@]}"
 
-#sorting the result of doublet combination
+#sorting the result of doublet combination and showing winning combination
 for (( i=0;i<4;i++ ))
 do
    for (( j=$((i+1));j<4;j++ ))
@@ -94,6 +95,7 @@ do
    done
 done
 echo "${dictionary[@]}"
+echo "${dictionary[3]}"
 
 #flipping a coin and store the Triplet combination
 HHH=0
@@ -122,16 +124,17 @@ do
    then
       ((HTH++))
 	elif [[ $coin1 -eq 1 && $coin2 -eq 0 && $coin3 -eq 0 ]]
-   then
-      ((THH++))
+	then
+		((THH++))
 	elif [[ $coin1 -eq 1 && $coin2 -eq 0 && $coin3 -eq 1 ]]
-   then
-      ((THT++))
+	then
+		((THT++))
 	elif [[ $coin1 -eq 1 && $coin2 -eq 1 && $coin3 -eq 0 ]]
-   then
-      ((TTH++))
-	else
-      ((HTT++))
+	then
+		((TTH++))
+	elif [[ $coin1 -eq 0 && $coin2 -eq 1 && $coin3 -eq 1 ]]
+	then
+		((HTT++))
 	fi
 done
 dictionary[0]=$HHH
@@ -145,7 +148,7 @@ dictionary[7]=$HTT
 echo "${!dictionary[@]}"
 echo "${dictionary[@]}"
 
-#calculating the percentage of triplet combination 
+#calculating the percentage of triplet combination  
 percentage1=$((($HHH*100)/10))
 percentage2=$((($TTT*100)/10))
 percentage3=$((($HHT*100)/10))
@@ -155,7 +158,7 @@ percentage6=$((($THT*100)/10))
 percentage7=$((($TTH*100)/10))
 percentage8=$((($HTT*100)/10))
 
-#sorting the result of triplet combination
+#sorting the result of triplet combination and showing winning combination
 for (( i=0;i<8;i++ ))
 do
    for (( j=$((i+1));j<8;j++ ))
@@ -169,7 +172,7 @@ do
    done
 done
 echo "${dictionary[@]}"
-
+echo "${dictionary[7]}"
 
 
 
