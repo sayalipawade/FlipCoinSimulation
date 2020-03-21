@@ -22,6 +22,21 @@ echo "${dictionary[@]}"
 percentage1=$((($head*100)/10))
 percentage2=$((($tail*100)/10))
 
+#sorting the result of singlet combination
+for (( i=0;i<4;i++ ))
+do
+   for (( j=$((i+1));j<4;j++ ))
+   do
+      if [[ ${dictionary[$i]} -gt ${dictionary[$j]} ]]
+      then
+            temp=${dictionary[$i]}
+            dictionary[$i]=${dictionary[$j]}
+            dictionary[$j]=$temp
+      fi
+   done
+done
+echo "${dictionary[@]}"
+
 #flipping a coin and store the doublet combination
 HH=0
 TT=0
@@ -64,8 +79,22 @@ dictionary[2]=$percentage3
 dictionary[3]=$percentage4
 echo "${!dictionary[@]}"
 echo "${dictionary[@]}"
-		
-				
+
+#sorting the result of doublet combination
+for (( i=0;i<4;i++ ))
+do
+   for (( j=$((i+1));j<4;j++ ))
+   do
+      if [[ ${dictionary[$i]} -gt ${dictionary[$j]} ]]
+      then
+            temp=${dictionary[$i]}
+            dictionary[$i]=${dictionary[$j]}
+            dictionary[$j]=$temp
+      fi
+   done
+done
+echo "${dictionary[@]}"
+
 #flipping a coin and store the Triplet combination
 HHH=0
 TTT=0
@@ -126,6 +155,20 @@ percentage6=$((($THT*100)/10))
 percentage7=$((($TTH*100)/10))
 percentage8=$((($HTT*100)/10))
 
+#sorting the result of triplet combination
+for (( i=0;i<8;i++ ))
+do
+   for (( j=$((i+1));j<8;j++ ))
+   do
+      if [[ ${dictionary[$i]} -gt ${dictionary[$j]} ]]
+      then
+            temp=${dictionary[$i]}
+            dictionary[$i]=${dictionary[$j]}
+            dictionary[$j]=$temp
+      fi
+   done
+done
+echo "${dictionary[@]}"
 
 
 
